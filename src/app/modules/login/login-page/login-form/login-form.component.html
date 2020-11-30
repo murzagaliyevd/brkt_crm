@@ -1,0 +1,27 @@
+<mat-card>
+  <h2>BARAKAT CRM</h2>
+  <form class="gg-border" [formGroup]="form" (submit)="onLogin()">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Введите логин</mat-label>
+        <input matInput placeholder="Логин" autocomplete="off" formControlName="username"/>
+        <mat-icon matSuffix>account_circle</mat-icon>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Ввведите пароль</mat-label>
+        <input matInput placeholder="Пароль" autocomplete="off" [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password"/>
+        <mat-icon matSuffix (click)="togglePasswordVisibility()">
+          {{ isPasswordVisible ? 'visibility' : 'visibility_off' }}
+        </mat-icon>
+      </mat-form-field>
+    </div>
+    <div>
+      <button type="submit" mat-raised-button color="primary">
+        Войти
+      </button>
+    </div>
+    <mat-error>{{error}}</mat-error>
+  </form>
+</mat-card>

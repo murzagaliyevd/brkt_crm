@@ -1,0 +1,65 @@
+<mat-toolbar color="primary">
+  <div class="d-flex w-100 justify-content-between align-items-center">
+    <button mat-icon-button
+            (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div>
+      <span *ngIf="authInfo" class="mr-4">{{authInfo.userName}}</span>
+
+      <button mat-raised-button
+              (click)="onLogout()">
+        <mat-icon>exit_to_app</mat-icon>
+        Выйти
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container
+  class="drawer-container"
+  (backdropClick)="closeDrawer()">
+  <mat-sidenav
+    class="drawer-container__menu"
+    #drawer
+    (keydown.escape)="closeDrawer()"
+    disableClose
+    [attr.role]="isHandset ? 'dialog' : 'navigation'"
+    [mode]="isHandset ? 'over' : 'side'"
+    [opened]="!isHandset">
+    <mat-nav-list>
+      <div *ngFor="let item of menuItems">
+        <div *ngIf="!item.children">
+          <a mat-list-item
+             [routerLink]="item.url"
+             routerLinkActive="router-link-active">
+            <mat-icon *ngIf="item.icon">{{item.icon}}</mat-icon>
+            {{item.label}}
+          </a>
+        </div>
+        <div *ngIf="item.children">
+          <div class="menu-item-parent">
+            <div class="title">
+              <mat-icon class="icon">{{item.icon}}</mat-icon>
+              {{item.label}}
+            </div>
+            <div *ngFor="let child of item.children">
+              <a mat-list-item
+                 [routerLink]="child.url"
+                 routerLinkActive="router-link-active">
+                <mat-icon *ngIf="child.icon">{{child.icon}} </mat-icon>
+                {{child.label}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="padding: 16px;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

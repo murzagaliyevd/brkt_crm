@@ -1,0 +1,27 @@
+@import '../../../node_modules/@angular/material/theming';
+@include mat-core();
+$barakat-primary: mat-palette($mat-indigo);
+$barakat-accent: mat-palette($mat-pink, A200, A100, A400);
+$barakat-warn: mat-palette($mat-red);
+$barakat-gray: mat-palette($mat-gray);
+$barakat-theme: mat-light-theme((
+  color: (
+    primary: $barakat-primary,
+    accent: $barakat-accent,
+    warn: $barakat-warn,
+    gray: $barakat-gray,
+    secondary: #ff0000
+  )
+));
+@include angular-material-theme($barakat-theme);
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f3f5f1;
+}
+
+* {
+  box-sizing: border-box;
+}

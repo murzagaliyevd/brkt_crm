@@ -22,3 +22,9 @@ mat-form-field {
 .mat-tab-body-wrapper {
   padding-top: 40px;
 }
+
+@media screen and (max-width: 960px) {
+  .unit-list {
+    display: block;
+  }
+}

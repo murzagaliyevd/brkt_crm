@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from './http.service';
 import {RoleEnum} from '@shared/models/enums/RoleEnum';
-import { getFromLocalStorage, removeFromLocalStorage, setToLocalStorage } from '@core/utils/local-storage';
+import { getFromLocalStorage, removeFromLocalStorage, setToLocalStorage } from '@shared/utils/local-storage';
 import AuthInfo from '@shared/models/AuthInfo';
 import User from '@shared/models/User';
 import { Observable } from 'rxjs';

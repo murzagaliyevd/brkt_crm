@@ -2,14 +2,14 @@ import Entity from '@shared/models/Entity';
 import ClientEntity from '@shared/models/ClientEntity';
 import RootUnitEntity from '@shared/models/RootUnitEntity';
 import TariffEntity from '@shared/models/TariffEntity';
-import DirectionStatus from '@shared/models/DirectionStatus';
+import WaybillStatus from '@shared/models/WaybillStatus';
 import Courier from '@shared/models/Courier';
 import Stock from '@shared/models/Stock';
 import CityAddress from '@shared/models/CityAddress';
 
-export default interface DirectionEntity extends Entity {
+export default interface WaybillEntity extends Entity {
 
-  status: DirectionStatus;
+  status: WaybillStatus;
 
   recipient: ClientEntity;
 

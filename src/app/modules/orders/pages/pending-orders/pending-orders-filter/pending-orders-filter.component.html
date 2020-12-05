@@ -1,0 +1,18 @@
+<form [formGroup]="form" (keydown.enter)="$event.preventDefault()">
+  <mat-form-field appearance="fill">
+    <mat-label translate>Выберите диапазон дат</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate [placeholder]="'С'" formControlName="dateFrom" [value]="today">
+      <input matEndDate [placeholder]="'по'" formControlName="dateTo" [value]="today">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+  </mat-form-field>
+
+  <button mat-raised-button (click)="initSearch()" color="primary" class="brkt-filter-button">
+    <span>Поиск</span>
+  </button>
+  <button mat-raised-button (click)="clear()" color="warn" class="brkt-ml-10 brkt-filter-button">
+    <span>Очистить</span>
+  </button>
+</form>

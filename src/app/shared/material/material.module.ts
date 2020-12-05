@@ -14,6 +14,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   imports: [
@@ -32,7 +37,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatCheckboxModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTabsModule,
+    MatGridListModule
   ],
   exports: [
     MatToolbarModule,
@@ -50,7 +60,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatCheckboxModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatTabsModule,
+    MatGridListModule
   ],
   declarations: [],
   entryComponents: [

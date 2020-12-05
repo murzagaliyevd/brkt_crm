@@ -8,7 +8,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-root',
+  selector: 'brkt-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

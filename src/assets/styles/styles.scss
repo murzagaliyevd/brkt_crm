@@ -25,3 +25,55 @@ body {
 * {
   box-sizing: border-box;
 }
+
+
+.brkt-filter-button {
+  display: inline-block !important;
+  vertical-align: top !important;
+  height: 52px;
+}
+
+
+.brkt-ml-10 {
+  margin-left: 10px!important;
+}
+
+.brkt-mt-10 {
+  margin-top: 10px !important;
+}
+
+.mat-row:hover {
+  background: mat-color($barakat-primary, 500);
+  .mat-cell {
+    color: white;
+  }
+}
+
+.mat-row.clickable {
+  cursor: pointer;
+}
+
+.brkt-waybill-row {
+  display: flex;
+  mat-form-field {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .brkt-waybill-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .brkt-waybill-row {
+    display: block;
+  }
+
+  .recipient-form-fields {
+    display: block;
+  }
+}

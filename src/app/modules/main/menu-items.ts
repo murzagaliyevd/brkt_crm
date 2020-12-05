@@ -12,7 +12,7 @@ export const MENU_ITEMS: MenuItem[] = [
     label: 'Все заказы',
     children: [
       {
-        url: '/orders',
+        url: '/orders/pending',
         icon: 'hourglass_full',
         label: 'Ожидающие',
       },

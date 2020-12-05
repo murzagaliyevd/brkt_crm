@@ -1,0 +1,120 @@
+<form [formGroup]="form" (keydown.enter)="$event.preventDefault()">
+  <h1 mat-dialog-title>{{title}} ({{waybill.status | waybillStatus}})</h1>
+  <div mat-dialog-content>
+    <mat-tab-group>
+      <mat-tab label="Детали заказа">
+        <mat-form-field appearance="outline">
+          <mat-label translate>Тариф</mat-label>
+          <mat-select formControlName="tariff">
+            <mat-option *ngFor="let tariff of tariffs" [value]="tariff.id">
+              {{tariff.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="brkt-waybill-row">
+          <div class="brkt-waybill-column">
+            <p class="group-title">Откуда</p>
+            <mat-form-field appearance="outline">
+              <mat-label translate>Город</mat-label>
+              <mat-select formControlName="departureCity">
+                <mat-option *ngFor="let city of cities" [value]="city.id">
+                  {{city.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label translate>Адрес</mat-label>
+              <input matInput formControlName="departureAddress" autocomplete="off">
+              <mat-error *ngIf="f.departureAddress.errors && f.departureAddress.errors.minlength">
+                Минимальная длина {{f.departureAddress.errors.minlength['requiredLength']}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="brkt-waybill-column">
+            <p class="group-title">Куда</p>
+            <mat-form-field appearance="outline">
+              <mat-label translate>Город</mat-label>
+              <mat-select formControlName="destinationCity">
+                <mat-option *ngFor="let city of cities" [value]="city.id">
+                  {{city.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label translate>Адрес</mat-label>
+              <input matInput formControlName="destinationAddress" autocomplete="off">
+              <mat-error *ngIf="f.destinationAddress.errors && f.destinationAddress.errors.minlength">
+                Минимальная длина {{f.destinationAddress.errors.minlength['requiredLength']}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <p class="group-title">Получатель</p>
+        <div class="brkt-waybill-row">
+          <mat-form-field appearance="outline">
+            <mat-label translate>Фамилия</mat-label>
+            <input matInput formControlName="recipientLastName" autocomplete="off">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label translate>Имя</mat-label>
+            <input matInput formControlName="recipientFirstName" autocomplete="off">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label translate>Телефон</mat-label>
+            <input matInput formControlName="recipientPhone" autocomplete="off" [textMask]="{mask: phoneMask}">
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline">
+          <mat-label translate>Курьер</mat-label>
+          <mat-select formControlName="courier">
+            <mat-option *ngFor="let courier of couriers" [value]="courier.id">
+              {{courier.lastName}} {{courier.firstName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label translate>Склад</mat-label>
+          <mat-select formControlName="stock">
+            <mat-option *ngFor="let stock of stocks" [value]="stock.id">
+              {{stock.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-tab>
+      <mat-tab label="Места">
+        <div formArrayName="units" *ngFor="let item of  units.controls;let i = index;">
+          <div [formGroupName]="i" class="unit-list">
+            <mat-form-field appearance="outline">
+              <mat-label>Вес (граммы)</mat-label>
+              <input matInput type="text" formControlName="weight">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Длина (сантиметры)</mat-label>
+              <input matInput type="text" formControlName="length">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Ширина (сантиметры)</mat-label>
+              <input matInput type="text" formControlName="width">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Высота (сантиметры)</mat-label>
+              <input matInput type="text" formControlName="height">
+            </mat-form-field>
+            <button mat-flat-button (click)="deleteUnit(i)"><mat-icon>delete</mat-icon></button>
+          </div>
+        </div>
+        <button type="button" mat-raised-button color="primary" (click)="addUnit()">Добавить место</button>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Закрыть</button>
+    <button type="submit" mat-raised-button color="primary" (click)="save()">Сохранить</button>
+  </div>
+</form>

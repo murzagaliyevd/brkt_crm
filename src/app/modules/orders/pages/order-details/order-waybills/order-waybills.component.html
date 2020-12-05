@@ -1,0 +1,29 @@
+<mat-table [dataSource]="list">
+  <ng-container matColumnDef="from">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Откуда</mat-header-cell>
+    <mat-cell *matCellDef="let element" data-label="Откуда">{{asWaybill(element)?.departure?.city?.name}}, {{asWaybill(element)?.departure?.address}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="to">
+    <mat-header-cell *matHeaderCellDef>Куда</mat-header-cell>
+    <mat-cell *matCellDef="let element"  data-label="Куда">{{asWaybill(element)?.destination?.city?.name}}, {{asWaybill(element)?.destination?.address}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="tariff">
+    <mat-header-cell *matHeaderCellDef>Тариф</mat-header-cell>
+    <mat-cell *matCellDef="let element"  data-label="Тариф">{{asWaybill(element)?.tariff?.name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="count">
+    <mat-header-cell *matHeaderCellDef>Количество мест</mat-header-cell>
+    <mat-cell *matCellDef="let element"  data-label="Количество мест">{{asWaybill(element)?.rootUnit?.children?.length}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef>Статус</mat-header-cell>
+    <mat-cell *matCellDef="let element"  data-label="Статус">{{ asWaybill(element)?.status | waybillStatus}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+  <mat-row *matRowDef="let element; columns: columns;" (click)="onClick( asWaybill(element) );" class="clickable"></mat-row>
+</mat-table>

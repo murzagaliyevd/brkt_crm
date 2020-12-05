@@ -7,7 +7,7 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { MENU_ITEMS } from './menu-items';
 
 @Component({
-  selector: 'app-main-page',
+  selector: 'brkt-main-page',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })

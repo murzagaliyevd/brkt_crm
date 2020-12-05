@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import User from '@shared/models/User';
 
 @Component({
-  selector: 'app-login-form',
+  selector: 'brkt-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })

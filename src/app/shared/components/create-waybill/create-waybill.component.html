@@ -1,0 +1,65 @@
+<form [formGroup]="form" (keydown.enter)="$event.preventDefault()">
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
+    <div class="brkt-waybill-row">
+      <div class="brkt-waybill-column">
+        <p>Откуда</p>
+        <mat-form-field appearance="outline">
+          <mat-label translate>Город</mat-label>
+          <mat-select formControlName="departureCity">
+            <mat-option *ngFor="let city of cities" [value]="city.id">
+              {{city.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label translate>Адрес</mat-label>
+          <input matInput formControlName="departureAddress" autocomplete="off">
+          <mat-error *ngIf="f.departureAddress.errors && f.departureAddress.errors.minlength">
+            Минимальная длина {{f.departureAddress.errors.minlength['requiredLength']}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="brkt-waybill-column">
+        <p>Куда</p>
+        <mat-form-field appearance="outline">
+          <mat-label translate>Город</mat-label>
+          <mat-select formControlName="destinationCity">
+            <mat-option *ngFor="let city of cities" [value]="city.id">
+              {{city.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label translate>Адрес</mat-label>
+          <input matInput formControlName="destinationAddress" autocomplete="off">
+          <mat-error *ngIf="f.destinationAddress.errors && f.destinationAddress.errors.minlength">
+            Минимальная длина {{f.destinationAddress.errors.minlength['requiredLength']}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <p>Получатель</p>
+    <div class="brkt-waybill-row">
+      <mat-form-field appearance="outline">
+        <mat-label translate>Фамилия</mat-label>
+        <input matInput formControlName="recipientLastName" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label translate>Имя</mat-label>
+        <input matInput formControlName="recipientFirstName" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label translate>Телефон</mat-label>
+        <input matInput formControlName="recipientPhone" autocomplete="off" [textMask]="{mask: phoneMask}">
+      </mat-form-field>
+    </div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Закрыть</button>
+  <button type="submit" mat-raised-button color="primary" (click)="save()">Сохранить</button>
+</div>
+</form>

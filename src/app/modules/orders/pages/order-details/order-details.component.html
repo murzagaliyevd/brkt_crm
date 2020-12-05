@@ -1,0 +1,21 @@
+<mat-card *ngIf="order">
+  <mat-card-content>
+    <h1>Заказ №{{order.id}}</h1>
+    <p>Отправитель: {{order?.sender?.lastName}} {{order?.sender?.firstName}}</p>
+    <p>Телефон: {{order?.sender?.phoneNumber}}</p>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-content>
+    <p>Накладные</p>
+    <mat-tab-group>
+      <mat-tab label="Активные">
+        <brkt-order-waybills [list]="activeDirections" (refresh)="refresh()"></brkt-order-waybills>
+      </mat-tab>
+      <mat-tab label="Архивные">
+        <brkt-order-waybills [list]="archivedDirections"></brkt-order-waybills>
+      </mat-tab>
+    </mat-tab-group>
+    <button mat-raised-button color="primary" class="brkt-mt-10" (click)="createWaybill()">Добавить накладную</button>
+  </mat-card-content>
+</mat-card>

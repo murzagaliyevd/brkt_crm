@@ -229,6 +229,35 @@ export class HttpService {
     }
   }
 
+  public put<returnType>(
+    urlSuffix: string,
+    body: any,
+    responseType?: 'json' | 'text' | null, isFormData?: boolean | null): Observable<returnType> {
+    const ob = this.newOptionsBuilder();
+    ob.appendHeader('Content-Type', 'application/json');
+
+    switch (responseType) {
+      case 'text': {
+        return this.http.post(this.url(urlSuffix), body, ob.getText())
+          .pipe(
+            map(event => {
+              return event.body;
+            }),
+            catchError(err => throwError(err))
+          ) as Observable<returnType>;
+      }
+      default: {
+        return this.http.put<any>(this.url(urlSuffix), body, ob.getJson())
+          .pipe(
+            map(event => {
+              return event.body;
+            }),
+            catchError(err => throwError(err))
+          ) as Observable<returnType>;
+      }
+    }
+  }
+
   public delete(urlSuffix: string,
                 keyValue?: { [key: string]: string | number | boolean | null },
                 responseType?: 'json' | 'text' | null): Observable<HttpResponse<any>> {

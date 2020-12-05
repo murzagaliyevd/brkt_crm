@@ -1,0 +1,24 @@
+<mat-table [dataSource]="list">
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>№</mat-header-cell>
+    <mat-cell *matCellDef="let element" data-label="№"> {{element.id}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="senderFullName">
+    <mat-header-cell *matHeaderCellDef>Отправитель</mat-header-cell>
+    <mat-cell *matCellDef="let element"  data-label="Отправитель">{{element.sender["lastName"]}} {{element.sender["firstName"]}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="senderPhoneNumber">
+    <mat-header-cell *matHeaderCellDef>Телефон</mat-header-cell>
+    <mat-cell *matCellDef="let element"  data-label="Телефон">{{element.sender["phoneNumber"]}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="directionsCount">
+    <mat-header-cell *matHeaderCellDef>Кол-во накладных</mat-header-cell>
+    <mat-cell *matCellDef="let element"  data-label="Кол-во накладных">{{element["directions"].length}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+  <mat-row *matRowDef="let element; columns: columns;" (click)="onClick(element.id);" class="clickable"></mat-row>
+</mat-table>

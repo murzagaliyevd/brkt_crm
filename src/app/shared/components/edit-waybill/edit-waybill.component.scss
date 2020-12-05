@@ -19,11 +19,6 @@ mat-form-field {
   margin-bottom: 5px;
 }
 
-::ng-deep {
-  .mat-form-field-wrapper {
-    padding-bottom: 0 !important;
-  }
-  .mat-tab-body-wrapper {
-    padding-top: 40px;
-  }
+.mat-tab-body-wrapper {
+  padding-top: 40px;
 }

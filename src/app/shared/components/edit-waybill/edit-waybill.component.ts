@@ -112,15 +112,17 @@ export class EditWaybillComponent implements OnInit {
       }
     }
 
+    const units = [];
     (this.units).controls.forEach((group: FormGroup, i) => {
+      let unit;
       if (this.waybill?.rootUnit?.children[i]) {
-        const unit = this.waybill?.rootUnit?.children[i];
+        unit = this.waybill?.rootUnit?.children[i];
         unit.cargo.weight = group.get('weight').value;
         unit.cargo.length = group.get('length').value;
         unit.cargo.width = group.get('width').value;
         unit.cargo.height = group.get('height').value;
       } else {
-        const unit = {
+        unit = {
           id: 0,
           parentId: 0,
           directionId: this.waybill.id,
@@ -137,9 +139,11 @@ export class EditWaybillComponent implements OnInit {
           },
           children: []
         }
-        this.waybill.rootUnit.children.push(unit);
       }
+      units.push(unit);
     });
+
+    this.waybill.rootUnit.children = units;
 
     const waybill = {
       ...this.waybill,

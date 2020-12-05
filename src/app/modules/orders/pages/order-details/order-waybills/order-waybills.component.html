@@ -21,9 +21,48 @@
 
   <ng-container matColumnDef="status">
     <mat-header-cell *matHeaderCellDef>Статус</mat-header-cell>
-    <mat-cell *matCellDef="let element"  data-label="Статус">{{ asWaybill(element)?.status | waybillStatus}}</mat-cell>
+    <mat-cell *matCellDef="let element"  data-label="Статус">
+      {{ asWaybill(element)?.status | waybillStatus}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>Действия</mat-header-cell>
+    <mat-cell *matCellDef="let element"  data-label="Действия">
+      <button (click)="open( asWaybill(element) )"
+              matTooltip="Редактировать"
+              mat-mini-fab
+              color="primary"><mat-icon>edit</mat-icon></button>
+
+      <button *ngIf="canSendToCourier(asWaybill(element))"
+              (click)="sendToCourier( asWaybill(element) )"
+              matTooltip="Отправить курьеру"
+              mat-mini-fab
+              class="brkt-ml-10"
+              color="primary"><mat-icon>double_arrow</mat-icon></button>
+
+      <button *ngIf="canSendToStock(asWaybill(element))"
+              (click)="sendToStock( asWaybill(element) )"
+              matTooltip="Отправить на склад"
+              mat-mini-fab
+              class="brkt-ml-10"
+              color="primary"><mat-icon>store_mall_directory</mat-icon></button>
+
+      <button *ngIf="!asWaybill(element)?.isArchived"
+              (click)="archive( asWaybill(element)?.id )"
+              matTooltip="Архивировать"
+              mat-mini-fab
+              class="brkt-ml-10"
+              color="warn"><mat-icon>archive</mat-icon></button>
+      <button *ngIf="asWaybill(element)?.isArchived"
+              (click)="unarchive( asWaybill(element)?.id )"
+              matTooltip="Разархивировать"
+              mat-mini-fab
+              class="brkt-ml-10"
+              color="primary"><mat-icon>unarchive</mat-icon></button>
+    </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
-  <mat-row *matRowDef="let element; columns: columns;" (click)="onClick( asWaybill(element) );" class="clickable"></mat-row>
+  <mat-row *matRowDef="let element; columns: columns;"></mat-row>
 </mat-table>

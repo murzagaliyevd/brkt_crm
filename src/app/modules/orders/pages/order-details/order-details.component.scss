@@ -3,3 +3,9 @@ mat-card {
     font-size: 18px;
   }
 }
+
+::ng-deep {
+  .mat-tab-body-wrapper {
+    max-height: 500px;
+  }
+}

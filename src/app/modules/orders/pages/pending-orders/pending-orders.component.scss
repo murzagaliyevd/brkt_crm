@@ -1,0 +1,7 @@
+@import 'styles';
+.mat-row:hover {
+  background: mat-color($barakat-primary, 500);
+  .mat-cell {
+    color: white;
+  }
+}

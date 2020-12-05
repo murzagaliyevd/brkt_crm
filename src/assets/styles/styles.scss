@@ -42,13 +42,6 @@ body {
   margin-top: 10px !important;
 }
 
-.mat-row:hover {
-  background: mat-color($barakat-primary, 500);
-  .mat-cell {
-    color: white;
-  }
-}
-
 .mat-row.clickable {
   cursor: pointer;
 }

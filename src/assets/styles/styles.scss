@@ -83,7 +83,7 @@ body {
       font-size: 1em;
     }
     .mat-row {
-      border-bottom: 5px solid #ddd;
+      border-bottom: 20px solid #ddd;
       display: block;
       padding: 8px 24px;
     }
@@ -110,6 +110,9 @@ body {
       }
       &:first-child {
         margin-top: 4%;
+      }
+      &:last-of-type {
+        padding-right: 0;
       }
     }
     .mat-header-row {

@@ -8,14 +8,14 @@ import { CreateWaybillComponent } from './components/create-waybill/create-waybi
 import { WabillStatusPipe } from '@shared/pipes/wabill-status.pipe';
 import { EditWaybillComponent } from './components/edit-waybill/edit-waybill.component';
 import { TextMaskModule } from 'angular2-text-mask';
-import { UnitListComponent } from './components/unit-list/unit-list.component';
+import { WaybillsListComponent } from '@shared/components/order-waybills/waybills-list.component';
 
 @NgModule({
   declarations: [
     CreateWaybillComponent,
     WabillStatusPipe,
     EditWaybillComponent,
-    UnitListComponent
+    WaybillsListComponent
   ],
   entryComponents: [
     CreateWaybillComponent,
@@ -32,7 +32,8 @@ import { UnitListComponent } from './components/unit-list/unit-list.component';
     MaterialModule,
     CommonModule,
     WabillStatusPipe,
-    TextMaskModule
+    TextMaskModule,
+    WaybillsListComponent
   ],
   providers: [
     OrderService,

@@ -9,7 +9,7 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     url: null,
     icon: 'list',
-    label: 'Все заказы',
+    label: 'Заказы',
     children: [
       {
         url: '/orders/pending',
@@ -40,21 +40,21 @@ export const MENU_ITEMS: MenuItem[] = [
       },
     ]
   },
-  {
-    url: null,
-    icon: 'corporate_fare',
-    label: 'Склад',
-    children: [
-      {
-        url: '/stock/waiting',
-        icon: 'hourglass_full',
-        label: 'В ожидании',
-      },
-      {
-        url: '/stock/in',
-        icon: 'store',
-        label: 'На складе',
-      },
-    ]
-  },
+  // {
+  //   url: null,
+  //   icon: 'corporate_fare',
+  //   label: 'Склад',
+  //   children: [
+  //     {
+  //       url: '/stock/waiting',
+  //       icon: 'hourglass_full',
+  //       label: 'В ожидании',
+  //     },
+  //     {
+  //       url: '/stock/in',
+  //       icon: 'store',
+  //       label: 'На складе',
+  //     },
+  //   ]
+  // },
 ];

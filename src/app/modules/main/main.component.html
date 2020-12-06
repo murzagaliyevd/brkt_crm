@@ -30,11 +30,11 @@
     [opened]="!isHandset">
     <mat-nav-list>
       <div *ngFor="let item of menuItems">
-        <div *ngIf="!item.children">
+        <div *ngIf="!item.children" class="root-item">
           <a mat-list-item
              [routerLink]="item.url"
              routerLinkActive="router-link-active">
-            <mat-icon *ngIf="item.icon">{{item.icon}}</mat-icon>
+            <mat-icon class="icon" *ngIf="item.icon">{{item.icon}}</mat-icon>
             {{item.label}}
           </a>
         </div>
@@ -48,7 +48,7 @@
               <a mat-list-item
                  [routerLink]="child.url"
                  routerLinkActive="router-link-active">
-                <mat-icon *ngIf="child.icon">{{child.icon}} </mat-icon>
+                <mat-icon class="icon" *ngIf="child.icon">{{child.icon}} </mat-icon>
                 {{child.label}}
               </a>
             </div>

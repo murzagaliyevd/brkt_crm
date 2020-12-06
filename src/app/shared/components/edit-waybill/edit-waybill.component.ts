@@ -75,15 +75,18 @@ export class EditWaybillComponent implements OnInit {
   }
 
   private _createForm() {
-    const units = this.waybill?.rootUnit?.children?.map(item => {
-      return this.fb.group(
-        {
-          weight: [item.cargo?.weight],
-          height: [item.cargo?.height],
-          width: [item.cargo?.width],
-          length: [item.cargo?.length],
-        });
-    })
+    let units = [];
+    if (this.waybill?.rootUnit?.children && this.waybill?.rootUnit?.children.length > 0) {
+      units = this.waybill?.rootUnit?.children?.map(item => {
+        return this.fb.group(
+          {
+            weight: [item.cargo?.weight],
+            height: [item.cargo?.height],
+            width: [item.cargo?.width],
+            length: [item.cargo?.length],
+          });
+      });
+    }
 
     this.form = this.fb.group({
       tariff: [this.waybill.tariff.id, Validators.required],

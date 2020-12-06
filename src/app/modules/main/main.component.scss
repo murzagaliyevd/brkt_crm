@@ -76,4 +76,11 @@ mat-nav-list {
   .icon {
     margin-right: 10px;
   }
+  .root-item {
+    ::ng-deep {
+      .mat-list-item-content {
+        padding-left: 16px !important;
+      }
+    }
+  }
 }

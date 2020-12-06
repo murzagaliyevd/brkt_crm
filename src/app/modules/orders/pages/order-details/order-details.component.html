@@ -10,10 +10,10 @@
     <p>Накладные</p>
     <mat-tab-group>
       <mat-tab label="Активные">
-        <brkt-order-waybills [list]="activeDirections" (refresh)="refresh()"></brkt-order-waybills>
+        <brkt-waybills-list [list]="activeDirections" (refresh)="refresh()"></brkt-waybills-list>
       </mat-tab>
       <mat-tab label="Архивные">
-        <brkt-order-waybills [list]="archivedDirections" (refresh)="refresh()"></brkt-order-waybills>
+        <brkt-waybills-list [list]="archivedDirections" (refresh)="refresh()"></brkt-waybills-list>
       </mat-tab>
     </mat-tab-group>
     <button mat-raised-button color="primary" class="brkt-mt-10" (click)="createWaybill()">Добавить накладную</button>

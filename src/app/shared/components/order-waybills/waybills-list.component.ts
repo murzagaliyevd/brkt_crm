@@ -8,15 +8,24 @@ import { WaybillService } from '@shared/services/waybill.service';
 import WaybillStatus from '@shared/models/WaybillStatus';
 import { ErrorModalComponent } from '@core/components/error-modal/error-modal.component';
 
+export enum ActionsEnum {
+  SEND_TO_COURIER,
+  SEND_TO_STOCK,
+  UNARCHIVE,
+  ARCHIVE,
+  EDIT
+}
+
 @UntilDestroy()
 @Component({
-  selector: 'brkt-order-waybills',
-  templateUrl: './order-waybills.component.html',
-  styleUrls: ['./order-waybills.component.scss']
+  selector: 'brkt-waybills-list',
+  templateUrl: './waybills-list.component.html',
+  styleUrls: ['./waybills-list.component.scss']
 })
-export class OrderWaybillsComponent implements OnInit {
+export class WaybillsListComponent implements OnInit {
   @Input() list: WaybillEntity[];
   @Output() refresh = new EventEmitter();
+  ActionsEnum = ActionsEnum;
   columns: string[] = ['from', 'to', 'tariff', 'count', 'status', 'actions'];
   constructor(
     private dialog: MatDialog,
@@ -60,15 +69,6 @@ export class OrderWaybillsComponent implements OnInit {
       })
   }
 
-  canSendToCourier(waybill: WaybillEntity) {
-    return waybill.status === WaybillStatus.Pending;
-  }
-
-  canSendToStock(waybill: WaybillEntity) {
-    return waybill.status === WaybillStatus.Accepted
-      || waybill.status === WaybillStatus.PickedUp
-  }
-
   sendToCourier(waybill: WaybillEntity) {
     if ( this._isValidWaybill(waybill) ) {
       this.waybillService.sendToCourier(waybill)
@@ -84,6 +84,24 @@ export class OrderWaybillsComponent implements OnInit {
         .subscribe( () => {
           this.refresh.emit( true);
         })
+    }
+  }
+
+  isActionAllowed(waybill: WaybillEntity, action: ActionsEnum ) {
+    switch (action) {
+      case ActionsEnum.ARCHIVE:
+        return !waybill.isArchived;
+      case ActionsEnum.UNARCHIVE:
+        return waybill.isArchived;
+      case ActionsEnum.SEND_TO_COURIER:
+        return waybill.status === WaybillStatus.Pending && !waybill.isArchived;
+        break;
+      case ActionsEnum.SEND_TO_STOCK:
+        return(waybill.status === WaybillStatus.Accepted || waybill.status === WaybillStatus.PickedUp) && !waybill.isArchived;
+        break;
+      case ActionsEnum.EDIT:
+        return !waybill.isArchived;
+        break;
     }
   }
 

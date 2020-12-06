@@ -60,6 +60,13 @@ body {
   }
 }
 
+.mat-row:hover {
+  background: mat-color($barakat-primary, 500);
+  .mat-cell {
+    color: white;
+  }
+}
+
 @media screen and (max-width: 960px) {
   .brkt-waybill-row {
     display: block;

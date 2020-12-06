@@ -6,7 +6,6 @@ import { OrdersComponent } from './orders.component';
 import { PendingOrdersTableComponent } from './pages/pending-orders/pending-orders-table/pending-orders-table.component';
 import { PendingOrdersFilterComponent } from './pages/pending-orders/pending-orders-filter/pending-orders-filter.component';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
-import { OrderWaybillsComponent } from './pages/order-details/order-waybills/order-waybills.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,6 @@ import { OrderWaybillsComponent } from './pages/order-details/order-waybills/ord
     PendingOrdersTableComponent,
     PendingOrdersFilterComponent,
     OrderDetailsComponent,
-    OrderWaybillsComponent
   ],
   imports: [
     SharedModule,
